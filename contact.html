@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/logoTransparent.png" alt="Logo" height="60" class="me-2">
+      <img src="images/logoBlue.png" alt="Logo" height="60" class="me-2">
       Over The Top Roofing
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,56 +35,52 @@
 </nav>
 
 <!-- Contact Form Section -->
-<main class="container mt-5 pt-5">
+<main class="container mt-5 pt-5 fs-4">
   <div class="text-center mb-4">
-    <h1 class="display-4 fw-bold">Get in Touch</h1>
-    <p class="lead">Have questions? Need a quote? We’re happy to help.</p>
+    <h1 class="display-3 fw-bold">Get in Touch</h1>
+    <p class="lead fs-4">Have questions? Need a quote? We’re happy to help.</p>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-5 text-center">
       <div id="alertSuccess" class="alert alert-success d-none" role="alert">
         Your message has been submitted successfully!
       </div>
-      <form id="contactForm" onsubmit="handleSubmit(event)">
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="name-label">Name</span>
-        <input type="text" class="form-control" id="name" placeholder="Your name" aria-label="Name" aria-describedby="name-label" required>
-      </div>
-    <div class="input-group mb-3">
-  <span class="input-group-text" id="email-label">Email</span>
-  <input type="email" class="form-control" id="email" placeholder="name@example.com" aria-label="Email" aria-describedby="email-label" required>
-</div>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="phone-label">Phone</span>
-        <input type="tel" class="form-control" id="phone" placeholder="1234567890" aria-label="Phone" aria-describedby="phone-label" required pattern="[0-9]+" title="Please enter numbers only" inputmode="numeric">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Message</span>
-        <textarea class="form-control" id="message" rows="4" placeholder="Tell us what you need" aria-label="Message"></textarea>
-      </div>
-    <button type="submit" class="btn btn-primary">Send Message</button>
-  </form>
+      <form id="contactForm" action="send.php" method="POST">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="name-label">Name</span>
+          <input type="text" name="name" class="form-control" id="name" placeholder="Your name" aria-label="Name" aria-describedby="name-label" required>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="email-label">Email</span>
+          <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" aria-label="Email" aria-describedby="email-label" required>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="phone-label">Phone</span>
+          <input type="tel" name="phone" class="form-control" id="phone" placeholder="1234567890" aria-label="Phone" aria-describedby="phone-label" required pattern="[0-9]+" title="Please enter numbers only" inputmode="numeric">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Message</span>
+          <textarea name="message" class="form-control" id="message" rows="4" placeholder="Tell us what you need" aria-label="Message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+      </form>
+    </div>
+    <div class="col-md-5 text-center">
+      <img src="images/info.png" class="img-fluid rounded" alt="Contact Info">
     </div>
   </div>
 </main>
 
+<!-- Footer -->
+<footer class="bg-light text-center text-muted py-3 mt-auto">
+  <div class="container">
+    <small>&copy; 2024 Over The Top Roofing. All rights reserved.</small><br>
+    <span class="d-block mt-2">For any inquiries about your roofing needs please call</span>
+    <a href="tel:2508610520" class="d-block fw-bold">250-861-0520</a>
+  </div>
+</footer>
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  function handleSubmit(event) {
-    event.preventDefault();
-    document.getElementById('alertSuccess').classList.remove('d-none');
-    document.getElementById('contactForm').reset();
-  }
-</script>
-<script>
-  function handleSubmit(event) {
-    event.preventDefault();
-    document.getElementById('alertSuccess').classList.remove('d-none');
-    document.getElementById('contactForm').reset();
-  }
-
-  
-</script>
 </body>
 </html>
