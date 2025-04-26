@@ -1,23 +1,27 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Admin email
-    $adminEmail = "thewebguyskelowna@gmail.com";
+    // Honeypot check
+    if (!empty($_POST['website'])) {
+        die("Spam detected. Submission blocked.");
+    }
+
+    // Admin email and details
+    $adminEmail = "formtester@overthetopexterior.com";  // Updated here
     $adminSubject = "New Contact Form Submission - Over The Top Roofing";
 
-    // Retrieve and sanitize form inputs
     $name = htmlspecialchars(trim($_POST["name"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $phone = htmlspecialchars(trim($_POST["phone"]));
     $message = htmlspecialchars(trim($_POST["message"]));
 
-    // Admin notification email body
+    // Email body for admin
     $adminBody = "New contact form submission received:\n\n";
     $adminBody .= "Name: $name\n";
     $adminBody .= "Email: $email\n";
     $adminBody .= "Phone: $phone\n";
     $adminBody .= "Message:\n$message\n";
 
-    // Confirmation email to user
+    // Email body for user confirmation
     $userSubject = "Thank you for contacting Over The Top Roofing";
     $userBody = "Hello $name,\n\n";
     $userBody .= "Thank you for reaching out to Over The Top Roofing. We’ve received your message and will get back to you shortly.\n\n";
@@ -26,27 +30,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userBody .= "Message:\n$message\n\n";
     $userBody .= "Best regards,\nOver The Top Roofing";
 
-    // Email headers
-    $headers = "From: formtester@overthetopexterior.com\r\n";
+    // Set headers
+    $headers = "From: formtester@overthetopexterior.com\r\n"; // Updated here too
     $headers .= "Reply-To: formtester@overthetopexterior.com\r\n";
 
-    // Send email to admin
+    // Send emails
     $adminMail = mail($adminEmail, $adminSubject, $adminBody, $headers);
-
-    // Send confirmation email to user
     $userMail = mail($email, $userSubject, $userBody, $headers);
 
-    // Check both emails were sent
+    // Redirect with success flag
     if ($adminMail && $userMail) {
-        echo "<script>
-          alert('Thank you! Your message has been sent and a confirmation email has been delivered.');
-          window.history.back();
-        </script>";
+        header("Location: contact.html?success=true");
+        exit;
     } else {
-        echo "<script>
-          alert('Error: Message could not be sent.');
-          window.history.back();
-        </script>";
+        echo "<script>alert('Error: Message could not be sent. Please try again later.'); window.history.back();</script>";
     }
 }
 ?>
