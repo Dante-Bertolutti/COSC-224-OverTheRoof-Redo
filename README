@@ -1,7 +1,6 @@
 If at any time you wish to change the email that the form submissions are sent to and the email that the confirmations send from. Simply access the send.php page and change the admin email field to the desired email. As well as any other appearances of the email you would like to replace
 
-
-
+If you wish to add any images or replace the ones on there they are named appropriately. just make sure they are in a 16:9 aspect ratio to ensure that everything is the correct size and shape
 
 --Login info for formtester email--
 formtester@overthetopexterior.com
